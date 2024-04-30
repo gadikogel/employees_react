@@ -3,7 +3,7 @@ import React from 'react'
 const Employee = ({ ID, name, position, salary, onClickUpdate, onClickDelete }) => {
 
   return (
-    <div className='container d-flex justify-content-between col-md-5 border broder-1 m-3'>
+    <div className='container d-flex justify-content-between col-md-5 border broder-1 m-5 my-2'>
       <div className='d-flex justify-content-around align-items-center'>
         <img className='' width={120} src="../public/images/profil.png" alt="" />
       </div>
@@ -15,8 +15,8 @@ const Employee = ({ ID, name, position, salary, onClickUpdate, onClickDelete }) 
         <h6 className=' p-2'>salary: {salary}</h6>
       </div>
       <div className='d-flex flex-column  justify-content-center align-items-center my-3 '>
-        <button className='btn btn-success' onClick={() => onClickUpdate(ID)}>update</button>
-        <button className='btn btn-danger' onClick={() => onClickDelete(ID)}>delete</button>
+        <button className='btn btn-success m-1' onClick={() => onClickUpdate(ID)}>update</button>
+        <button className='btn btn-danger m-1' onClick={() => onClickDelete(ID)}>delete</button>
 
       </div>
     </div>

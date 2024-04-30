@@ -22,7 +22,7 @@ const PostEmployee = ({ onAddEmployee, onClickClose, active}) => {
     const onSub = (Data) => {
         createEmployee(Data);
         reset();
-        onClicClose()
+        onClickClose()
     }
 
     return (
@@ -61,13 +61,6 @@ const PostEmployee = ({ onAddEmployee, onClickClose, active}) => {
                 </button>
             </div>
             </form>
-            {
-                Status && (
-                    <p className={Status >= 200 ? ' text-success' : 'text-danger'}>
-                        {Status}
-                    </p>
-                )
-            }
         </div >
         </>
     )

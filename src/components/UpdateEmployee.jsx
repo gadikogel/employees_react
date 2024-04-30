@@ -11,8 +11,7 @@ const UpdateEmployee = ({ ID, name, position, salary, active, onClickSubmit }) =
     const updateEmployee = async (Data) => {
         try {
             const { data, status } = await axios.put(`/employees/${ID}`, Data);
-            console.log(data);
-            setStatus(status);
+            console.log( data ,"status"+status);
         } catch (error) {
             console.error(error);
         }

@@ -24,6 +24,7 @@ const App = () => {
     getEmployee();
   }, []);
 
+
   const onClickPost = () => {
     setShowFormPost(true);
   }
@@ -57,8 +58,8 @@ const App = () => {
   };
 
   return (
-    <div className=" container-fluid margin ">
-      <button onClick={onClickPost}>post employee</button>
+    <div className=" container-fluid ">
+      <button onClick={onClickPost}className='mb-3'>post employee</button>
       <PostEmployee onAddEmployee={addEmployee} active={showFormPost} onClickClose={() => setShowFormPost(false)} />
       <UpdateEmployee {...CurrentEmployeeToUpdate} active={showFormUpdate} onClickSubmit={() => setShowFormUpdate(false)} />
       <div className='row '>
