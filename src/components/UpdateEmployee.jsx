@@ -55,7 +55,7 @@ const UpdateEmployee = ({ ID, name, position, salary, active, onClickSubmit,onUp
                         <input defaultValue={salary}{...register("salary", { required: true, min: 6000, max: 100000 })} type='number' className="form-control" placeholder="salary" />
                         <label >Salary</label>
                     </div>
-                    <button type='submit' >
+                    <button type='submit'className='btn btn-dark' >
                         send
                     </button>
                 </div>

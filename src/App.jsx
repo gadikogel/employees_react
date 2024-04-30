@@ -37,9 +37,10 @@ const App = () => {
     console.log(ID);
     try {
       console.log(ID);
-      const response = await axios.delete(`/employees/${ID}`);
+      const {status} = await axios.delete(`/employees/${ID}`);
       setEmployees(employees.filter(employee => employee.ID !== ID))
-      console.log(response.status);
+      console.log(status);
+      alert("user  "+ID+"  deleted successfully");
 
     } catch (error) {
       console.error('Error deleting employee:', error);
