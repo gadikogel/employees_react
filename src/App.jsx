@@ -11,7 +11,6 @@ const App = () => {
 
   const [employees, setEmployees] = useState([]);
   const [CurrentEmployeeToUpdate, setCurrentEmployeeToUpdate] = useState({});
-  const [CurrentEmployeeToDelete, setCurrentEmployeeToDelete] = useState();
   const [showFormPost, setShowFormPost] = useState(false);
   const [showFormUpdate, setShowFormUpdate] = useState(false);
 
@@ -38,9 +37,7 @@ const onClickPost=()=>{
 
   }
   const onClickDelete = async (ID) => {
-    console.log(ID)
-    setCurrentEmployeeToDelete(ID);
-
+    console.log(ID);
     try {
       console.log(ID);
       const response = await axios.delete(`/employees/${ID}`);
@@ -69,7 +66,6 @@ const onClickPost=()=>{
       <UpdateEmployee {...CurrentEmployeeToUpdate} active={showFormUpdate} onClickSubmit={() => setShowFormUpdate(false)} />
       <div className='row '>
         {renderEmployees()}
-
       </div>
       
 
