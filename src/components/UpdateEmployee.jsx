@@ -5,13 +5,14 @@ import axios from "../constants/urls";
 
 
 
-const UpdateEmployee = ({ ID, name, position, salary, active, onClickSubmit }) => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+const UpdateEmployee = ({ ID, name, position, salary, active, onClickSubmit,onUpdateEmployee }) => {
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const updateEmployee = async (Data) => {
         try {
-            const { data, status } = await axios.put(`/employees/${ID}`, Data);
-            console.log( data ,"status"+status);
+            const {data,status}= await axios.put(`/employees/${ID}`, Data);
+            onUpdateEmployee(Data,ID);
+            console.log(data ,"status"+status);
         } catch (error) {
             console.error(error);
         }
@@ -20,6 +21,7 @@ const UpdateEmployee = ({ ID, name, position, salary, active, onClickSubmit }) =
     const onSub = (data) => {
         updateEmployee(data);
         onClickSubmit()
+        reset();
     }
     return (
 

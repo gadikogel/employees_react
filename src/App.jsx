@@ -24,7 +24,6 @@ const App = () => {
     getEmployee();
   }, []);
 
-
   const onClickPost = () => {
     setShowFormPost(true);
   }
@@ -33,13 +32,13 @@ const App = () => {
     console.log(ID)
     setCurrentEmployeeToUpdate(employees.find(employee => employee.ID === ID));
     setShowFormUpdate(true);
-
   }
-  const onClickDelete = async (ID) => {
+  const DeletEmployee = async (ID) => {
     console.log(ID);
     try {
       console.log(ID);
       const response = await axios.delete(`/employees/${ID}`);
+      setEmployees(employees.filter(employee => employee.ID !== ID))
       console.log(response.status);
 
     } catch (error) {
@@ -50,18 +49,27 @@ const App = () => {
   const addEmployee = (newEmployee) => {
     setEmployees([...employees, newEmployee]);
   };
+  const updateEmployee = (data,ID) => {
+    console.log(data);
+    setEmployees(Employees =>Employees.map(employee => {
+      if (employee.ID === ID) {
+        return data;
+      }
+      return employee;
+    }));
+  };
 
   const renderEmployees = () => {
     return employees.map((item, index) => (
-      <Employee {...item} key={index} onClickUpdate={onClickUpdate} onClickDelete={() => onClickDelete(item.ID)} />
+      <Employee {...item} key={index} onClickUpdate={onClickUpdate} onClickDelete={() => DeletEmployee(item.ID)} />
     ));
   };
 
   return (
     <div className=" container-fluid ">
-      <button onClick={onClickPost}className='mb-3'>post employee</button>
+      <button onClick={onClickPost}className='mb-3 btn btn-info'>post employee</button>
       <PostEmployee onAddEmployee={addEmployee} active={showFormPost} onClickClose={() => setShowFormPost(false)} />
-      <UpdateEmployee {...CurrentEmployeeToUpdate} active={showFormUpdate} onClickSubmit={() => setShowFormUpdate(false)} />
+      <UpdateEmployee {...CurrentEmployeeToUpdate} onUpdateEmployee={updateEmployee} active={showFormUpdate} onClickSubmit={() => setShowFormUpdate(false)} setEmployees/>
       <div className='row '>
         {renderEmployees()}
       </div>
