@@ -5,8 +5,6 @@ import Employee from "./components/Employee"
 import PostEmployee from './components/PostEmployee';
 import UpdateEmployee from './components/UpdateEmployee';
 
-
-
 const App = () => {
 
   const [employees, setEmployees] = useState([]);
@@ -26,9 +24,9 @@ const App = () => {
     getEmployee();
   }, []);
 
-const onClickPost=()=>{
-  setShowFormPost(true);
-}
+  const onClickPost = () => {
+    setShowFormPost(true);
+  }
 
   const onClickUpdate = (ID) => {
     console.log(ID)
@@ -45,7 +43,7 @@ const onClickPost=()=>{
 
     } catch (error) {
       console.error('Error deleting employee:', error);
-      
+
     }
   }
   const addEmployee = (newEmployee) => {
@@ -58,18 +56,14 @@ const onClickPost=()=>{
     ));
   };
 
-
   return (
     <div className=" container-fluid margin ">
       <button onClick={onClickPost}>post employee</button>
-      <PostEmployee onAddEmployee={addEmployee} active={showFormPost}onClickClose ={() => setShowFormPost(false)}/>
+      <PostEmployee onAddEmployee={addEmployee} active={showFormPost} onClickClose={() => setShowFormPost(false)} />
       <UpdateEmployee {...CurrentEmployeeToUpdate} active={showFormUpdate} onClickSubmit={() => setShowFormUpdate(false)} />
       <div className='row '>
         {renderEmployees()}
       </div>
-      
-
-
     </div>
   )
 
